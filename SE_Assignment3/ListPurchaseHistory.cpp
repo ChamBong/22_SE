@@ -1,4 +1,4 @@
-#include "hong_ping.h"
+#include "class.h"
 
 // Initializing Static Attribute
 ListPurchaseHistoryUI* ListPurchaseHistoryUI::listPurchaseHistoryUI = nullptr;

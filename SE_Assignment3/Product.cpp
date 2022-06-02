@@ -1,4 +1,4 @@
-#include "hong_ping.h"
+#include "class.h"
 
 int Product::productSN = 0;
 

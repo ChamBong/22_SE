@@ -1,4 +1,4 @@
-#include "hong_ping.h"
+#include "class.h"
 
 // Input and Output File Name Configuring
 const string INPUT_FILE_NAME  = "input.txt";

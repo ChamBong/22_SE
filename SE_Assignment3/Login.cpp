@@ -1,4 +1,4 @@
-#include "hong_ping.h"
+#include "class.h"
 
 // Initializing Static Attribute
 LoginUI* LoginUI::loginUI = nullptr;

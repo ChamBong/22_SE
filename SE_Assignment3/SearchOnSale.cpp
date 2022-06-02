@@ -1,9 +1,13 @@
-#include "hong_ping.h"
+#include "class.h"
+
+
 
 // Initializing Static Attribute
 SearchOnSaleUI* SearchOnSaleUI::searchOnSaleUI = nullptr;
 SearchOnSale* SearchOnSale::searchOnSale = nullptr;
 Product* SearchOnSale::focusOn = nullptr;
+
+
 
 SearchOnSaleUI* SearchOnSaleUI::getUiInstance()
 {
@@ -13,34 +17,16 @@ SearchOnSaleUI* SearchOnSaleUI::getUiInstance()
     return SearchOnSaleUI::searchOnSaleUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSaleUI::SearchOnSaleUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSaleUI::~SearchOnSaleUI()
 {
     delete SearchOnSaleUI::searchOnSaleUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSale* SearchOnSale::getControlInstance()
 {
     if (SearchOnSale::searchOnSale == nullptr)
@@ -49,12 +35,6 @@ SearchOnSale* SearchOnSale::getControlInstance()
     return SearchOnSale::searchOnSale;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSaleUI* SearchOnSale::getUI()
 {
     return searchOnSaleUI;
@@ -70,23 +50,11 @@ void SearchOnSale::setFocusOn(Product* fouceOnProduct)
     focusOn = fouceOnProduct;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSale::SearchOnSale()
 {
     searchOnSaleUI = SearchOnSaleUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 SearchOnSale::~SearchOnSale()
 {
     delete searchOnSale;

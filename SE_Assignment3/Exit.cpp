@@ -1,15 +1,15 @@
 #include "class.h"
 
 // Initializing Static Attribute
-RateUI* RateUI::rateUI = nullptr;
-Rate* Rate::rate = nullptr;
+ExitUI* ExitUI::exitUI = nullptr;
+Exit* Exit::exit = nullptr;
 
-RateUI* RateUI::getUiInstance()
+ExitUI* ExitUI::getUiInstance()
 {
-    if(RateUI::rateUI == nullptr)
-        RateUI::rateUI = new RateUI;
+    if(ExitUI::exitUI == nullptr)
+        ExitUI::exitUI = new ExitUI;
 
-    return RateUI::rateUI;
+    return ExitUI::exitUI;
 }
 
 /*
@@ -18,7 +18,7 @@ RateUI* RateUI::getUiInstance()
  *  Return Type   :
  *  Description   : 
  */
-RateUI::RateUI()
+ExitUI::ExitUI()
 {
     // NOP
 }
@@ -29,9 +29,9 @@ RateUI::RateUI()
  *  Return Type   :
  *  Description   : 
  */
-RateUI::~RateUI()
+ExitUI::~ExitUI()
 {
-    delete RateUI::rateUI;
+    delete ExitUI::exitUI;
 }
 
 /*
@@ -40,12 +40,12 @@ RateUI::~RateUI()
  *  Return Type   :
  *  Description   : 
  */
-Rate* Rate::getControlInstance()
+Exit* Exit::getControlInstance()
 {
-    if (Rate::rate == nullptr)
-        Rate::rate = new Rate;
+    if (Exit::exit == nullptr)
+        Exit::exit = new Exit;
 
-    return Rate::rate;
+    return Exit::exit;
 }
 
 /*
@@ -54,9 +54,9 @@ Rate* Rate::getControlInstance()
  *  Return Type   :
  *  Description   : 
  */
-RateUI* Rate::getUI()
+ExitUI* Exit::getUI()
 {
-    return rateUI;
+    return exitUI;
 }
 
 /*
@@ -65,9 +65,9 @@ RateUI* Rate::getUI()
  *  Return Type   :
  *  Description   : 
  */
-Rate::Rate()
+Exit::Exit()
 {
-    rateUI = RateUI::getUiInstance();
+    exitUI = ExitUI::getUiInstance();
 }
 
 /*
@@ -76,7 +76,7 @@ Rate::Rate()
  *  Return Type   :
  *  Description   : 
  */
-Rate::~Rate()
+Exit::~Exit()
 {
-    delete rate;
+    delete exit;
 }
