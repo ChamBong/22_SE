@@ -311,6 +311,23 @@ void run(ifstream &inputFile, ofstream &outputFile)
             {
             case 1: // 5.1. 판매 상품 통계 (CollectStatistics)
             {
+                // Call Control Instance
+                CollectStatistics *collectStatistics = CollectStatistics::getControlInstance();
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                // Call Boundary Instance (Output Processing)
+                collectStatistics->getUI()->setOutput(outputFile, "5.1. 판매 상품 통계\n");
+
+                // Try Collect Statistics
+                string statisticsInfo = member->collectStatistics();
+                
+                if (!statisticsInfo.empty()) // Collect Statistics Success
+                    collectStatistics->getUI()->setOutput(outputFile, "> " + statisticsInfo + "\n");
+                else // Collect Statistics Failure
+                    collectStatistics->getUI()->setOutput(outputFile, ">\n\n");
+        
                 break;
             }
             }
@@ -323,7 +340,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
             {
             case 1: // 6.1. 종료 (Exit)
             {
-                //is_program_exit = true;
+                // Call Control Instance
+                Exit *exit = Exit::getControlInstance();
+
+                // Call Boundary Instance (Output Processing)
+                exit->getUI()->setOutput(outputFile, "6.1. 종료");
+
+                is_program_exit = true;
                 return;
             }
             }

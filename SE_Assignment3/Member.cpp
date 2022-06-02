@@ -169,6 +169,22 @@ bool Member::rate(string productName, int rating)
     return false; // 구매만족도 평가 실패
 }
 
+string Member::collectStatistics()
+{
+    string statisticsInfo = "";
+    for (int i = 0; i < saleProducts; i++)
+    {
+        statisticsInfo += saleList[i]->getProductName() + " ";
+        statisticsInfo += std::to_string(saleList[i]->getPrice() * saleList[i]->getSoldOutQty()) + " ";
+        statisticsInfo += std::to_string(saleList[i]->getAvgRating()) + "\n";
+
+        if (i + 1 < saleProducts)
+            statisticsInfo += "> ";
+    }
+
+    return statisticsInfo;
+}
+
 // get Functions
 string Member::getName()              { return name; }
 string Member::getSSN()               { return SSN; }

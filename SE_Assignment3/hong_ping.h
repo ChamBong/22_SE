@@ -312,6 +312,19 @@ private:
     static CollectStatisticsUI* collectStatisticsUI;
 };
 
+class ExitUI : public UI
+{
+public:
+    static ExitUI* getUiInstance();
+    
+private:
+    ExitUI();
+    ~ExitUI();
+
+private:
+    static ExitUI* exitUI;
+};
+
 
 /*
  *  Class Name   : Control
@@ -517,7 +530,35 @@ private:
     RateUI* rateUI;
 };
 
-// class CollectStatistics : public Control;
+class CollectStatistics : public Control
+{
+public:
+    static CollectStatistics* getControlInstance();
+    virtual CollectStatisticsUI* getUI() override;
+
+private:
+    CollectStatistics();
+    ~CollectStatistics();
+
+private:
+    static CollectStatistics* collectStatistics;
+    CollectStatisticsUI* collectStatisticsUI;
+};
+
+class Exit : public Control
+{
+public:
+    static Exit* getControlInstance();
+    virtual ExitUI* getUI() override;
+
+private:
+    Exit();
+    ~Exit();
+
+private:
+    static Exit* exit;
+    ExitUI* exitUI;
+};
 
 /*
  *  Class Name   : 
@@ -575,7 +616,7 @@ public:
     bool purchase();            // 상품 구매
     string listPurchaseHistory(); // 상품 구매 내역 조회
     bool rate(string productName, int rating);                // 상품 구매 만족도 평가
-    void collectStatistics();   // 판매 상품 통계
+    string collectStatistics();   // 판매 상품 통계
 
 // get Functions
 public:

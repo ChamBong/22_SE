@@ -1,8 +1,5 @@
-# Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
-# 		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
-
-Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o Admin.o Member.o Product.o Main.o
-		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o Admin.o Member.o Product.o Main.o
+Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Exit.o Admin.o Member.o Product.o Main.o
+		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Exit.o Admin.o Member.o Product.o Main.o
 
 UI.o : UI.cpp
 		g++ -c -o UI.o UI.cpp
@@ -40,8 +37,11 @@ ListPurchaseHistory.o : ListPurchaseHistory.cpp
 Rate.o : Rate.cpp
 		g++ -c -o Rate.o Rate.cpp
 
-# CollectStatistics.o : CollectStatistics.cpp
-# 		g++ -c -o CollectStatistics.o CollectStatistics.cpp
+CollectStatistics.o : CollectStatistics.cpp
+		g++ -c -o CollectStatistics.o CollectStatistics.cpp
+
+Exit.o : Exit.cpp
+		g++ -c -o Exit.o Exit.cpp
 
 Admin.o : Admin.cpp
 		g++ -c -o Admin.o Admin.cpp
