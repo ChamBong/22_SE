@@ -3,6 +3,7 @@
 // Initializing Static Attribute
 SearchOnSaleUI* SearchOnSaleUI::searchOnSaleUI = nullptr;
 SearchOnSale* SearchOnSale::searchOnSale = nullptr;
+Product* SearchOnSale::focusOn = nullptr;
 
 SearchOnSaleUI* SearchOnSaleUI::getUiInstance()
 {
@@ -59,15 +60,14 @@ SearchOnSaleUI* SearchOnSale::getUI()
     return searchOnSaleUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
-ListSoldOut::ListSoldOut()
+Product* SearchOnSale::getFocusOn()
 {
-    listSoldOutUI = ListSoldOutUI::getUiInstance();
+    return focusOn;
+}
+
+void SearchOnSale::setFocusOn(Product* fouceOnProduct)
+{
+    focusOn = fouceOnProduct;
 }
 
 /*
@@ -76,7 +76,18 @@ ListSoldOut::ListSoldOut()
  *  Return Type   :
  *  Description   : 
  */
-ListSoldOut::~ListSoldOut()
+SearchOnSale::SearchOnSale()
 {
-    delete listSoldOut;
+    searchOnSaleUI = SearchOnSaleUI::getUiInstance();
+}
+
+/*
+ *  Function Name :
+ *  Parameters    :
+ *  Return Type   :
+ *  Description   : 
+ */
+SearchOnSale::~SearchOnSale()
+{
+    delete searchOnSale;
 }

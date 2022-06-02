@@ -141,6 +141,23 @@ void Admin::addProduct(Product* newProduct)
     productList[products++] = newProduct;
 }
 
+Product* Admin::searchProduct(string productName)
+{
+    for (int i = 0; i < products; i++)
+    {
+        // 검색어와 일치하는 상품 검사
+        if (productList[i]->getProductName() == productName)
+        {
+            // 현재 판매중인 상품인지를 검사
+            if (productList[i]->getOnSaleQty() > 0)
+                return productList[i]; // 검색 성공
+        }
+    }
+
+    // 검색 실패
+    return nullptr;
+}
+
 /*
  *  Function Name :
  *  Parameters    :

@@ -4,7 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <string.h>
 #include <sstream>
+#include <math.h>
 
 // Namespaces
 using std::fstream;
@@ -457,6 +459,8 @@ class SearchOnSale : public Control
 public:
     static SearchOnSale* getControlInstance();
     virtual SearchOnSaleUI* getUI() override;
+    static Product* getFocusOn();
+    static void setFocusOn(Product* focusOnProduct);
 
 private:
     SearchOnSale();
@@ -464,12 +468,55 @@ private:
 
 private:
     static SearchOnSale* searchOnSale;
+    static Product* focusOn;
     SearchOnSaleUI* searchOnSaleUI;
 };
 
-// class Purchase : public Control;
-// class ListPurchaseHistory : public Control;
-// class Rate : public Control;
+class Purchase : public Control
+{
+public:
+    static Purchase* getControlInstance();
+    virtual PurchaseUI* getUI() override;
+
+private:
+    Purchase();
+    ~Purchase();
+
+private:
+    static Purchase* purchase;
+    PurchaseUI* purchaseUI;
+};
+
+class ListPurchaseHistory : public Control
+{
+public:
+    static ListPurchaseHistory* getControlInstance();
+    virtual ListPurchaseHistoryUI* getUI() override;
+
+private:
+    ListPurchaseHistory();
+    ~ListPurchaseHistory();
+
+private:
+    static ListPurchaseHistory* listPurchaseHistory;
+    ListPurchaseHistoryUI* listPurchaseHistoryUI;
+};
+
+class Rate : public Control
+{
+public:
+    static Rate* getControlInstance();
+    virtual RateUI* getUI() override;
+
+private:
+    Rate();
+    ~Rate();
+
+private:
+    static Rate* rate;
+    RateUI* rateUI;
+};
+
 // class CollectStatistics : public Control;
 
 /*
@@ -489,6 +536,7 @@ public:
 
 public:
     void addProduct(Product* newProduct);
+    Product* searchProduct(string productName);
 
 public:
     static Admin* getAdminInstance();
@@ -523,10 +571,10 @@ public:
     bool sale(string productName, string brand, int price, int qty); // 판매 의류 등록
     string listOnSale();          // 등록 상품 조회
     string listSoldOut();         // 판매 완료 상품 조회
-    void searchOnSale();        // 상품 정보 검색
-    void purchase();            // 상품 구매
-    void listPurchaseHistory(); // 상품 구매 내역 조회
-    void rate();                // 상품 구매 만족도 평가
+    Product* searchOnSale(string productName);        // 상품 정보 검색
+    bool purchase();            // 상품 구매
+    string listPurchaseHistory(); // 상품 구매 내역 조회
+    bool rate(string productName, int rating);                // 상품 구매 만족도 평가
     void collectStatistics();   // 판매 상품 통계
 
 // get Functions
@@ -576,11 +624,11 @@ public:
     int getOnSaleQty();
     int getSoldOutQty();
     string getSellerID();
-    string getBuyerID();
-    int getRating();
+    int getAvgRating();
 
-    void setOnSale();
+    void setPurchase();
     void setSoldOut();
+    void setRating(int rating);
 
     bool isOnSale();
     bool isSoldOut();
@@ -600,7 +648,7 @@ private:
     int onSaleQty;
     int soldOutQty;
     string sellerID;
-    string buyerID;
-    int rating;
+    int ratings[MAX_PERSONAL_PRODUCTS];
+    int avgRating;
     bool onSale;
 };

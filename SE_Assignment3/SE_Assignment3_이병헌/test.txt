@@ -11,3 +11,12 @@
 3 1 pumaTee PUMA 51000 10
 3 2
 3 3
+4 1 nikeTee
+4 1 adidasTee
+4 1 pumaTee
+4 2
+3 2
+3 3
+4 3
+4 4 nikeTee 3
+4 4 adidasTee 2

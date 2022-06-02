@@ -74,16 +74,99 @@ string Member::listSoldOut()
         brand = saleList[i]->getBrand();
         price = std::to_string(saleList[i]->getPrice());
         soldOutQty = std::to_string(saleList[i]->getSoldOutQty());
-        rating = std::to_string(saleList[i]->getRating());
+        rating = std::to_string(saleList[i]->getAvgRating());
 
         listSoldOut += "> " + productName + " " + brand + " " + price + " " + soldOutQty + " " + rating;
         cnt_listSoldOut++;
     }
-    
+
     if(cnt_listSoldOut == 0)
         return ">";
     
     return listSoldOut;
+}
+
+Product* Member::searchOnSale(string productName)
+{
+    Admin* admin = Admin::getAdminInstance();
+    return admin->searchProduct(productName);
+}
+
+bool Member::purchase()
+{
+    Product* targetProduct = SearchOnSale::getFocusOn();
+
+    // 로그아웃 상태
+    if(Admin::getAdminInstance()->getLoginID == nullptr)
+        return false; // 구매 실패
+
+    // 상품 정보 검색 미이행 상태
+    if(targetProduct == nullptr)
+        return false; // 구매 실패
+
+    // 재고 없음
+    if(targetProduct->getOnSaleQty() == 0)
+        return false; // 구매 실패
+
+    // 구매 처리
+    targetProduct->setPurchase();
+
+    // 회원별 구매 상품 내역에 추가
+    purchaseList[purchasedProducts++] = targetProduct;
+
+    return true; // 구매 성공
+}
+
+string Member::listPurchaseHistory()
+{
+    // 로그아웃 상태
+    if (Admin::getLoginID().empty())
+        return ">"; // 상품 구매 내역 조회 실패
+
+    // 판매한 상품 없음
+    if (purchasedProducts == 0)
+        return ">"; // 상품 구매 내역 조회 실패
+
+    string listPurchaseHistory;
+    int cnt_listPurchase = 0;
+    string sellerID, productName, brand, price, onSaleQty, rating;
+
+    for (int i = 0; i < purchasedProducts; i++)
+    {
+        sellerID = purchaseList[i]->getSellerID();
+        productName = purchaseList[i]->getProductName();
+        brand = purchaseList[i]->getBrand();
+        price = std::to_string(purchaseList[i]->getPrice());
+        onSaleQty = std::to_string(purchaseList[i]->getSoldOutQty());
+        rating = std::to_string(purchaseList[i]->getAvgRating());
+
+        listPurchaseHistory += "> " + sellerID + " " + productName + " " + brand + " " + price + " " + onSaleQty + " " + rating;
+        cnt_listPurchase++;
+    }
+
+    if(cnt_listPurchase == 0)
+        return ">";
+    
+    return listPurchaseHistory;
+}
+
+bool Member::rate(string productName, int rating)
+{
+    // 평가 범위 밖의 만족도 입력
+    if (rating < 1 || rating > 5)
+        return false; // 구매만족도 평가 실패
+
+    for (int i = 0; i < purchasedProducts; i++)
+    {
+        if (purchaseList[i]->getProductName() == productName)
+        {
+            purchaseList[i]->setRating(rating);
+            return true; // 구매만족도 평가 성공
+        }
+    }
+
+    // 일치하는 상품명 없음
+    return false; // 구매만족도 평가 실패
 }
 
 // get Functions

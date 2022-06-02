@@ -37,19 +37,15 @@ string Product::getSellerID()
     return this->sellerID;
 }
 
-string Product::getBuyerID()
+int Product::getAvgRating()
 {
-    return this->buyerID;
+    return avgRating;
 }
 
-int Product::getRating()
+void Product::setPurchase()
 {
-    return this->rating;
-}
-
-void Product::setOnSale()
-{
-    this->onSale = true;
+    onSaleQty--;
+    soldOutQty++;
 }
 
 void Product::setSoldOut()
@@ -57,18 +53,41 @@ void Product::setSoldOut()
     this->onSale = false;
 }
 
+void Product::setRating(int rating)
+{
+    int sum = 0, cnt = 0;
+    for (int i = 0; i < MAX_PERSONAL_PRODUCTS; i++)
+    {
+        if (ratings[i] == 0)
+        {
+            ratings[i] = rating;
+            sum += rating;
+            cnt++;
+            break;
+        }
+        else
+        {
+            sum += ratings[i];
+            cnt++;
+        }
+    }
+
+    avgRating = round((float)sum / (float)cnt);
+}
+
 bool Product::isOnSale()
 {
-    return (this->onSale == true);
+    return (onSaleQty > 0);
 }
 
 bool Product::isSoldOut()
 {
-    return (this->onSale == false);
+    return (onSaleQty == 0);
 }
 
 Product::Product(string productName, string brand, int price, int qty, string sellerID)
-:productID(Product::productSN), productName(productName), brand(brand), price(price), onSaleQty(qty), soldOutQty(0), sellerID(sellerID), buyerID(""), rating(0), onSale(true)
+:productID(Product::productSN), productName(productName), brand(brand), price(price), onSaleQty(qty), soldOutQty(0), sellerID(sellerID), avgRating(0), onSale(true)
 {
     Product::productSN++;
+    memset(ratings, 0, sizeof(int)*MAX_PERSONAL_PRODUCTS);
 }

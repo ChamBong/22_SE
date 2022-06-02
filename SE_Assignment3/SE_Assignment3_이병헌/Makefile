@@ -1,8 +1,8 @@
 # Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
 # 		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
 
-Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o Admin.o Member.o Product.o Main.o
-		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o Admin.o Member.o Product.o Main.o
+Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o Admin.o Member.o Product.o Main.o
+		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o Admin.o Member.o Product.o Main.o
 
 UI.o : UI.cpp
 		g++ -c -o UI.o UI.cpp
@@ -28,17 +28,17 @@ ListOnSale.o : ListOnSale.cpp
 ListSoldOut.o : ListSoldOut.cpp
 		g++ -c -o ListSoldOut.o ListSoldOut.cpp
 
-# SearchOnSale.o : SearchOnSale.cpp
-# 		g++ -c -o SearchOnSale.o SearchOnSale.cpp
+SearchOnSale.o : SearchOnSale.cpp
+		g++ -c -o SearchOnSale.o SearchOnSale.cpp
 
-# Purchase.o : Purchase.cpp
-# 		g++ -c -o Purchase.o Purchase.cpp
+Purchase.o : Purchase.cpp
+		g++ -c -o Purchase.o Purchase.cpp
 
-# ListPurchaseHistory.o : ListPurchaseHistory.cpp
-# 		g++ -c -o ListPurchaseHistory.o ListPurchaseHistory.cpp
+ListPurchaseHistory.o : ListPurchaseHistory.cpp
+		g++ -c -o ListPurchaseHistory.o ListPurchaseHistory.cpp
 
-# Rate.o : Rate.cpp
-# 		g++ -c -o Rate.o Rate.cpp
+Rate.o : Rate.cpp
+		g++ -c -o Rate.o Rate.cpp
 
 # CollectStatistics.o : CollectStatistics.cpp
 # 		g++ -c -o CollectStatistics.o CollectStatistics.cpp

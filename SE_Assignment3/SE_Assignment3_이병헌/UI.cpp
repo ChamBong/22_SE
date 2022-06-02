@@ -9,6 +9,7 @@
 string UI::getInput(ifstream &inputFile)
 {
     string inputString;
+    getline(inputFile, inputString, ' ');  // Blank Compaction
     getline(inputFile, inputString, '\n');
     return inputString;
 }

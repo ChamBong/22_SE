@@ -1,7 +1,7 @@
 #include "hong_ping.h"
 
 // Input and Output File Name Configuring
-const string INPUT_FILE_NAME  = "test.txt";
+const string INPUT_FILE_NAME  = "input.txt";
 const string OUTPUT_FILE_NAME = "output.txt";
 
 
@@ -191,18 +191,114 @@ void run(ifstream &inputFile, ofstream &outputFile)
             {
             case 1: // 4.1. 상품 정보 검색 (SearchOnSale)
             {
+                // Call Control Instance
+                SearchOnSale *searchOnSale = SearchOnSale::getControlInstance();
+
+                // Call Boundary Instance (Input Processing)
+                string searchInfo = searchOnSale->getUI()->getInput(inputFile);
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                // Call Boundary Instance (Output Processing)
+                searchOnSale->getUI()->setOutput(outputFile, "4.1. 상품 정보 검색\n");
+
+                // Try Search
+                Product* searchTarget = member->searchOnSale(searchInfo);
+                string sellerID, productName, brand, price, onSaleQty, rating;
+                if (searchTarget) // Search Success
+                {
+                    sellerID = searchTarget->getSellerID();
+                    productName = searchTarget->getProductName();
+                    brand = searchTarget->getBrand();
+                    price = std::to_string(searchTarget->getPrice());
+                    onSaleQty = std::to_string(searchTarget->getOnSaleQty());
+                    rating = std::to_string(searchTarget->getAvgRating());
+
+                    searchOnSale->getUI()->setOutput(outputFile, "> " + sellerID + " " + productName + " " + brand + " " + price + " " + onSaleQty + " " + rating + "\n\n");
+                    SearchOnSale::setFocusOn(searchTarget);
+                }
+                else // Search Failure
+                {
+                    searchOnSale->getUI()->setOutput(outputFile, ">\n\n");
+                    SearchOnSale::setFocusOn(nullptr);
+                }
+                
                 break;
             }
             case 2: // 4.2. 상품 구매 (Purchase)
             {
+                // Call Control Instance
+                Purchase *purchase = Purchase::getControlInstance();
+
+                purchase->getUI()->setOutput(outputFile, "4.2. 상품 구매\n");
+
+                // 상품 정보 검색이 선행되지 않은 경우
+                if(SearchOnSale::getFocusOn() == nullptr)
+                {
+                    purchase->getUI()->setOutput(outputFile, ">\n\n");
+                    break;
+                }
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                // Try Purchase
+                if(member->purchase()) // Purchase Success
+                    purchase->getUI()->setOutput(outputFile, "> " + Admin::getLoginID() + " " + SearchOnSale::getFocusOn()->getProductName() + "\n\n");
+                else // Purchase Failure
+                    purchase->getUI()->setOutput(outputFile, ">\n\n");
+
+                // 상품 정보 검색 창 닫기
+                SearchOnSale::setFocusOn(nullptr);
+
                 break;
             }
             case 3: // 4.3. 상품 구매 내역 조회 (ListPurchaseHistory)
             {
+                // Call Control Instance
+                ListPurchaseHistory *listPurchaseHistory = ListPurchaseHistory::getControlInstance();
+
+                // Call Boundary Instance (Output Processing)
+                listPurchaseHistory->getUI()->setOutput(outputFile, "4.3. 상품 구매 내역 조회\n");
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                listPurchaseHistory->getUI()->setOutput(outputFile, member->listPurchaseHistory() + "\n\n");
+
                 break;
             }
             case 4: // 4.4. 상품 구매만족도 평가 (Rate)
             {
+                // Call Control Instance
+                Rate *rate = Rate::getControlInstance();
+
+                // Call Boundary Instance (Input Processing)
+                string rateInfo = rate->getUI()->getInput(inputFile);
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                // Input String Tokenizing
+                stringstream ss(rateInfo);
+                string productName, rating;
+                ss >> productName >> rating;
+
+                // Call Boundary Instance (Output Processing)
+                rate->getUI()->setOutput(outputFile, "4.4. 상품 구매만족도 평가\n");
+
+                // Try Rate
+                if (member->rate(productName, stoi(rating))) // Rate Success
+                {
+                    string sellerID = admin->searchProduct(productName)->getSellerID();
+                    rate->getUI()->setOutput(outputFile, "> " + sellerID + " " + productName + " " + rating + "\n\n");
+                }
+                else // Rate Failure
+                {
+                    rate->getUI()->setOutput(outputFile, ">\n\n");
+                }
+
                 break;
             }
             }
