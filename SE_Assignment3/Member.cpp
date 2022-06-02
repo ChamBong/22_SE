@@ -137,7 +137,7 @@ string Member::listPurchaseHistory()
         productName = purchaseList[i]->getProductName();
         brand = purchaseList[i]->getBrand();
         price = std::to_string(purchaseList[i]->getPrice());
-        onSaleQty = std::to_string(purchaseList[i]->getSoldOutQty());
+        onSaleQty = std::to_string(purchaseList[i]->getOnSaleQty());
         rating = std::to_string(purchaseList[i]->getAvgRating());
 
         listPurchaseHistory += "> " + sellerID + " " + productName + " " + brand + " " + price + " " + onSaleQty + " " + rating;

@@ -39,7 +39,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
                 // Try Sign Up
                 if(Admin::getAdminInstance()->addMember(name,SSN,ID,password)) // Sign Up Success
-                    signUp->getUI()->setOutput(outputFile, ">" + signUpInfo + "\n\n");
+                    signUp->getUI()->setOutput(outputFile, "> " + signUpInfo + "\n\n");
                 else // Sign Up Failure
                     signUp->getUI()->setOutput(outputFile, ">\n\n");
 

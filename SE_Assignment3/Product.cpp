@@ -71,7 +71,6 @@ void Product::setRating(int rating)
             cnt++;
         }
     }
-
     avgRating = round((float)sum / (float)cnt);
 }
 
