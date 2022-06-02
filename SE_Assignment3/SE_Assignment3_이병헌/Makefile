@@ -1,8 +1,8 @@
 # Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
 # 		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o SearchOnSale.o Purchase.o ListPurchaseHistory.o Rate.o CollectStatistics.o Admin.o Member.o Product.o Main.o
 
-Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o Admin.o Member.o Product.o Main.o
-		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o Admin.o Member.o Product.o Main.o
+Hong-Ping : UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o Admin.o Member.o Product.o Main.o
+		g++ -o Hong-Ping UI.o SignUp.o DropOut.o Login.o Logout.o Enroll.o ListOnSale.o ListSoldOut.o Admin.o Member.o Product.o Main.o
 
 UI.o : UI.cpp
 		g++ -c -o UI.o UI.cpp
@@ -22,11 +22,11 @@ Logout.o : Logout.cpp
 Enroll.o : Enroll.cpp
 		g++ -c -o Enroll.o Enroll.cpp
 
-# ListOnSale.o : ListOnSale.cpp
-# 		g++ -c -o ListOnSale.o ListOnSale.cpp	
+ListOnSale.o : ListOnSale.cpp
+		g++ -c -o ListOnSale.o ListOnSale.cpp	
 
-# ListSoldOut.o : ListSoldOut.cpp
-# 		g++ -c -o ListSoldOut.o ListSoldOut.cpp
+ListSoldOut.o : ListSoldOut.cpp
+		g++ -c -o ListSoldOut.o ListSoldOut.cpp
 
 # SearchOnSale.o : SearchOnSale.cpp
 # 		g++ -c -o SearchOnSale.o SearchOnSale.cpp

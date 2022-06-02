@@ -8,3 +8,6 @@
 2 2
 2 1 kkm pwd1
 3 1 nikeTee Nike 25000 50
+3 1 pumaTee PUMA 51000 10
+3 2
+3 3

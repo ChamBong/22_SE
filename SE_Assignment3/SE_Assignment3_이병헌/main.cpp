@@ -8,18 +8,18 @@ const string OUTPUT_FILE_NAME = "output.txt";
 
 void run(ifstream &inputFile, ofstream &outputFile)
 {
-    string menu_level_1, menu_level_2;
+    int menu_level_1, menu_level_2;
     bool is_program_exit = false;
 
     while (!inputFile.eof() && !is_program_exit)
     {
         inputFile >> menu_level_1 >> menu_level_2;
 
-        switch (stoi(menu_level_1))
+        switch (menu_level_1)
         {
         case 1:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 1.1. 회원 가입 (SignUp)
             {
@@ -48,8 +48,6 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
             case 2: // 1.2. 회원탈퇴 (DropOut)
             {
-                std::cout << "Call 1.2\n";
-
                 // Call Control Instance
                 DropOut* dropOut = DropOut::getControlInstance();
 
@@ -72,7 +70,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
         case 2:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 2.1. 로그인 (Login)
             {
@@ -117,11 +115,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 break;
             }
             }
+
             break;
         }
+
         case 3:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 3.1. 판매 의류 등록 (Enroll)
             {
@@ -139,6 +139,9 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
 
+                // Call Boundary Instance (Output Processing)
+                enroll->getUI()->setOutput(outputFile, "3.1. 판매 의류 등록\n");
+
                 // Try Enroll
                 if (member->sale(productName, brand, stoi(price), stoi(qty))) // Enroll Success
                     enroll->getUI()->setOutput(outputFile, "> " + enrollInfo + "\n\n");
@@ -147,15 +150,33 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 
                 break;
             }
-            case 2: // 2.3. 등록 상품 조회 (ListOnSale)
+            case 2: // 3.2. 등록 상품 조회 (ListOnSale)
             {
-                
+                // Call Control Instance
+                ListOnSale *listOnSale = ListOnSale::getControlInstance();
+
+                // Call Boundary Instance (Output Processing)
+                listOnSale->getUI()->setOutput(outputFile, "3.2. 등록 상품 조회\n");
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                listOnSale->getUI()->setOutput(outputFile, member->listOnSale() + "\n");
 
                 break;
             }
             case 3: // 3.3. 판매 완료 상품 조회 (ListSoldOut)
             {
-                
+                // Call Control Instance
+                ListSoldOut *listSoldOut = ListSoldOut::getControlInstance();
+
+                // Call Boundary Instance (Output Processing)
+                listSoldOut->getUI()->setOutput(outputFile, "3.3. 판매 완료 상품 조회\n");
+
+                Admin* admin = Admin::getAdminInstance();
+                Member* member = admin->findMember(Admin::getLoginID());
+
+                listSoldOut->getUI()->setOutput(outputFile, member->listSoldOut() + "\n\n");
 
                 break;
             }
@@ -163,9 +184,10 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
             break;
         }
+
         case 4:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 4.1. 상품 정보 검색 (SearchOnSale)
             {
@@ -184,34 +206,33 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 break;
             }
             }
+                        
             break;
         }
         case 5:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 5.1. 판매 상품 통계 (CollectStatistics)
             {
                 break;
             }
             }
+
             break;
         }
         case 6:
         {
-            switch (stoi(menu_level_2))
+            switch (menu_level_2)
             {
             case 1: // 6.1. 종료 (Exit)
             {
                 //is_program_exit = true;
-                break;
+                return;
             }
             }
+
             break;
-        }
-        default:
-        {
-            // 입력 오류
         }
         }
     }

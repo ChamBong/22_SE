@@ -14,8 +14,9 @@ using std::string;
 using std::stringstream;
 
 // Constants
-const int MAX_MEMBERS  = 1000; // 최대 회원수
-const int MAX_PRODUCTS = 1000; // 최대 상품수
+const int MAX_ALL_MEMBERS  = 1000;     // 최대 전체 회원수
+const int MAX_ALL_PRODUCTS = 1000;     // 최대 전체 상품수
+const int MAX_PERSONAL_PRODUCTS = 500; // 개인별 최대 구입 및 판매 상품수 
 
 
 
@@ -421,9 +422,51 @@ private:
     EnrollUI* enrollUI;
 };
 
-// class ListOnSale : public Control;
-// class ListSoldOut : public Control;
-// class SearchOnSale : public Control;
+class ListOnSale : public Control
+{
+public:
+    static ListOnSale* getControlInstance();
+    virtual ListOnSaleUI* getUI() override;
+
+private:
+    ListOnSale();
+    ~ListOnSale();
+
+private:
+    static ListOnSale* listOnSale;
+    ListOnSaleUI* listOnSaleUI;
+};
+
+class ListSoldOut : public Control
+{
+public:
+    static ListSoldOut* getControlInstance();
+    virtual ListSoldOutUI* getUI() override;
+
+private:
+    ListSoldOut();
+    ~ListSoldOut();
+
+private:
+    static ListSoldOut* listSoldOut;
+    ListSoldOutUI* listSoldOutUI;
+};
+
+class SearchOnSale : public Control
+{
+public:
+    static SearchOnSale* getControlInstance();
+    virtual SearchOnSaleUI* getUI() override;
+
+private:
+    SearchOnSale();
+    ~SearchOnSale();
+
+private:
+    static SearchOnSale* searchOnSale;
+    SearchOnSaleUI* searchOnSaleUI;
+};
+
 // class Purchase : public Control;
 // class ListPurchaseHistory : public Control;
 // class Rate : public Control;
@@ -445,17 +488,26 @@ public:
     Member* findMember(string ID);
 
 public:
+    void addProduct(Product* newProduct);
+
+public:
     static Admin* getAdminInstance();
     static string getLoginID();
 
 private:
     Admin();
+    ~Admin();
 
 private:
-    static Admin* admin;
-    static string loginID;
-    Member* memberList[MAX_MEMBERS];
-    unsigned int members;
+    static Admin* admin;   // 관리자
+    static string loginID; // 현재 로그인중인 회원의 ID
+    
+    Member* memberList[MAX_ALL_MEMBERS]; // 전체 회원 리스트
+    int members; // 전체 회원수
+
+    Product* productList[MAX_ALL_PRODUCTS]; // 전체 상품 리스트 (판매중 상품 + 판매완료 상품)
+    int products; // 전체 상품수 (판매중 상품 + 판매완료 상품)
+    
 };
 
 /*
@@ -464,47 +516,54 @@ private:
  *  Relationship : 
  *  Description  :
  */
-class Member{
+class Member
+{
+// Use Case Functions
 public:
     bool sale(string productName, string brand, int price, int qty); // 판매 의류 등록
-    void listOnSale(); // 등록 상품 조회
-    void listSoldOut(); // 판매 완료 상품 조회
-    void searchOnSale(); // 상품 정보 검색
-    void purchase(); // 상품 구매
+    string listOnSale();          // 등록 상품 조회
+    string listSoldOut();         // 판매 완료 상품 조회
+    void searchOnSale();        // 상품 정보 검색
+    void purchase();            // 상품 구매
     void listPurchaseHistory(); // 상품 구매 내역 조회
-    void rate();
-    void collectStatistics(); // 판매 상품 통계
+    void rate();                // 상품 구매 만족도 평가
+    void collectStatistics();   // 판매 상품 통계
 
+// get Functions
 public:
     string getName();
     string getSSN();
     string getID();
     string getPassword();
+    int getSaleProducts();
+    int getPurchasedProducts();
 
+// Constructor and Destructor
 public:
     Member(string name, string SSN, string ID, string password);
+    ~Member();
 
+// 회원 인적사항
 private:
-    string name;
-    string SSN;
-    string ID;
-    string password;
+    string name;     // 회원 성명
+    string SSN;      // 주민등록번호 (Social Security Number)
+    string ID;       // 회원 ID
+    string password; // 회원 비밀번호
 
+// 회원별 판매·구매 상품 내역
 private:
-    Product* onSaleList[MAX_PRODUCTS];
-    int onSaleProducts;
+    Product* saleList[MAX_PERSONAL_PRODUCTS]; // 판매중·판매완료 상품 리스트
+    int saleProducts;  // 개인별 판매한 상품 종류 개수
 
-    Product* soldOutList[MAX_PRODUCTS];
-    int soldOutProducts;
-
-    Product* purchasedList[MAX_PRODUCTS];
-    int purchasedProducts;
+    Product* purchaseList[MAX_PERSONAL_PRODUCTS]; // 구매 상품 리스트
+    int purchasedProducts; // 개인별 구매한 상품 종류 개수
 };
 
 /*
- *  Class Name   : 
+ *  Class Name   : Product
  *  Class Type   : Entity
- *  Relationship : 
+ *  Relationship : Admin  HAS-A Product
+ *                 Member HAS-A Product
  *  Description  :
  */
 class Product
@@ -514,6 +573,8 @@ public:
     string getProductName();
     string getBrand();
     int getPrice();
+    int getOnSaleQty();
+    int getSoldOutQty();
     string getSellerID();
     string getBuyerID();
     int getRating();
@@ -525,21 +586,21 @@ public:
     bool isSoldOut();
 
 public:
-    Product(string productName, string brand, int price, string sellerID);
+    Product(string productName, string brand, int price, int qty, string sellerID);
     ~Product();
 
 private:
-    static int products;
+    static int productSN;
+
+private:
     int productID;
     string productName;
     string brand;
     int price;
+    int onSaleQty;
+    int soldOutQty;
     string sellerID;
     string buyerID;
     int rating;
     bool onSale;
-
-private:
-    Product *prev;
-    Product *next;
 };

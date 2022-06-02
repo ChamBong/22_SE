@@ -1,7 +1,51 @@
 #include "hong_ping.h"
 
-int Product::products = 0;
+int Product::productSN = 0;
 
+int Product::getProductID()
+{
+    return this->productID;
+}
+
+string Product::getProductName()
+{
+    return this->productName;
+}
+
+string Product::getBrand()
+{
+    return this->brand;
+}
+
+int Product::getPrice()
+{
+    return this->price;
+}
+
+int Product::getOnSaleQty()
+{
+    return this->onSaleQty;
+}
+
+int Product::getSoldOutQty()
+{
+    return this->soldOutQty;
+}
+
+string Product::getSellerID()
+{
+    return this->sellerID;
+}
+
+string Product::getBuyerID()
+{
+    return this->buyerID;
+}
+
+int Product::getRating()
+{
+    return this->rating;
+}
 
 void Product::setOnSale()
 {
@@ -23,8 +67,8 @@ bool Product::isSoldOut()
     return (this->onSale == false);
 }
 
-Product::Product(string productName, string brand, int price, string sellerID)
-:productID(Product::products), productName(productName), brand(brand), price(price), sellerID(sellerID), buyerID(""), rating(0), onSale(false), prev(nullptr), next(nullptr)
+Product::Product(string productName, string brand, int price, int qty, string sellerID)
+:productID(Product::productSN), productName(productName), brand(brand), price(price), onSaleQty(qty), soldOutQty(0), sellerID(sellerID), buyerID(""), rating(0), onSale(true)
 {
-    Product::products++;
+    Product::productSN++;
 }
