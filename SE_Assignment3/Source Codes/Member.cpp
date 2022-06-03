@@ -76,7 +76,7 @@ string Member::listSoldOut()
         soldOutQty = std::to_string(saleList[i]->getSoldOutQty());
         rating = std::to_string(saleList[i]->getAvgRating());
 
-        listSoldOut += "> " + productName + " " + brand + " " + price + " " + soldOutQty + " " + rating;
+        listSoldOut += "> " + productName + " " + brand + " " + price + " " + soldOutQty + " " + rating + "\n";
         cnt_listSoldOut++;
     }
 
@@ -140,7 +140,7 @@ string Member::listPurchaseHistory()
         onSaleQty = std::to_string(purchaseList[i]->getOnSaleQty());
         rating = std::to_string(purchaseList[i]->getAvgRating());
 
-        listPurchaseHistory += "> " + sellerID + " " + productName + " " + brand + " " + price + " " + onSaleQty + " " + rating;
+        listPurchaseHistory += "> " + sellerID + " " + productName + " " + brand + " " + price + " " + onSaleQty + " " + rating + "\n";
         cnt_listPurchase++;
     }
 

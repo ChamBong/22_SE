@@ -176,7 +176,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
 
-                listSoldOut->getUI()->setOutput(outputFile, member->listSoldOut() + "\n\n");
+                listSoldOut->getUI()->setOutput(outputFile, member->listSoldOut() + "\n");
 
                 break;
             }
@@ -265,7 +265,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
 
-                listPurchaseHistory->getUI()->setOutput(outputFile, member->listPurchaseHistory() + "\n\n");
+                listPurchaseHistory->getUI()->setOutput(outputFile, member->listPurchaseHistory() + "\n");
 
                 break;
             }
