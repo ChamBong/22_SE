@@ -4,12 +4,6 @@
 ExitUI* ExitUI::exitUI = nullptr;
 Exit* Exit::exit = nullptr;
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   :
- */
 ExitUI* ExitUI::getUiInstance()
 {
     if(ExitUI::exitUI == nullptr)
@@ -28,12 +22,6 @@ ExitUI::~ExitUI()
     delete ExitUI::exitUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Exit* Exit::getControlInstance()
 {
     if (Exit::exit == nullptr)
@@ -42,12 +30,6 @@ Exit* Exit::getControlInstance()
     return Exit::exit;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ExitUI* Exit::getUI()
 {
     return exitUI;

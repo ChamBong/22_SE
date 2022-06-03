@@ -4,12 +4,6 @@
 ListPurchaseHistoryUI* ListPurchaseHistoryUI::listPurchaseHistoryUI = nullptr;
 ListPurchaseHistory* ListPurchaseHistory::listPurchaseHistory = nullptr;
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   :
- */
 ListPurchaseHistoryUI* ListPurchaseHistoryUI::getUiInstance()
 {
     if(ListPurchaseHistoryUI::listPurchaseHistoryUI == nullptr)
@@ -28,12 +22,6 @@ ListPurchaseHistoryUI::~ListPurchaseHistoryUI()
     delete ListPurchaseHistoryUI::listPurchaseHistoryUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListPurchaseHistory* ListPurchaseHistory::getControlInstance()
 {
     if (ListPurchaseHistory::listPurchaseHistory == nullptr)
@@ -42,12 +30,6 @@ ListPurchaseHistory* ListPurchaseHistory::getControlInstance()
     return ListPurchaseHistory::listPurchaseHistory;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListPurchaseHistoryUI* ListPurchaseHistory::getUI()
 {
     return listPurchaseHistoryUI;

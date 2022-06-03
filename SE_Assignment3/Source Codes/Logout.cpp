@@ -4,12 +4,6 @@
 LogoutUI* LogoutUI::logoutUI = nullptr;
 Logout* Logout::logout = nullptr;
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LogoutUI* LogoutUI::getUiInstance()
 {
     if (LogoutUI::logoutUI == nullptr)
@@ -28,12 +22,6 @@ LogoutUI::~LogoutUI()
     delete LogoutUI::logoutUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Logout *Logout::getControlInstance()
 {
         if (Logout::logout == nullptr)
@@ -42,12 +30,6 @@ Logout *Logout::getControlInstance()
     return Logout::logout;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LogoutUI *Logout::getUI()
 {
     return this->logoutUI;

@@ -4,12 +4,6 @@
 EnrollUI* EnrollUI::enrollUI = nullptr;
 Enroll* Enroll::enroll = nullptr;
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 EnrollUI* EnrollUI::getUiInstance()
 {
     if(EnrollUI::enrollUI == nullptr)
@@ -28,12 +22,6 @@ EnrollUI::~EnrollUI()
     delete EnrollUI::enrollUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Enroll* Enroll::getControlInstance()
 {
     if (Enroll::enroll == nullptr)
@@ -42,12 +30,6 @@ Enroll* Enroll::getControlInstance()
     return Enroll::enroll;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 EnrollUI* Enroll::getUI()
 {
     return this->enrollUI;

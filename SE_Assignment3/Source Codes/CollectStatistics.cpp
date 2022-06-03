@@ -22,12 +22,6 @@ CollectStatisticsUI::~CollectStatisticsUI()
     delete CollectStatisticsUI::collectStatisticsUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatistics* CollectStatistics::getControlInstance()
 {
     if (CollectStatistics::collectStatistics == nullptr)
@@ -36,12 +30,6 @@ CollectStatistics* CollectStatistics::getControlInstance()
     return CollectStatistics::collectStatistics;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatisticsUI* CollectStatistics::getUI()
 {
     return collectStatisticsUI;

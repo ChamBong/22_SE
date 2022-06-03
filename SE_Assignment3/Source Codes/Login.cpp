@@ -4,12 +4,6 @@
 LoginUI* LoginUI::loginUI = nullptr;
 Login* Login::login = nullptr;
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LoginUI* LoginUI::getUiInstance()
 {
     if(LoginUI::loginUI == nullptr)
@@ -28,12 +22,6 @@ LoginUI::~LoginUI()
     delete LoginUI::loginUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Login* Login::getControlInstance()
 {
     if (Login::login == nullptr)
@@ -42,12 +30,6 @@ Login* Login::getControlInstance()
     return Login::login;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LoginUI* Login::getUI()
 {
     return this->loginUI;

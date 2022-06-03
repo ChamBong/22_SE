@@ -4,12 +4,6 @@
 DropOutUI* DropOutUI::dropOutUI = nullptr;
 DropOut* DropOut::dropOut = nullptr;
 
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOutUI* DropOutUI::getUiInstance()
 {
     if (DropOutUI::dropOutUI == nullptr)
@@ -28,12 +22,6 @@ DropOutUI::~DropOutUI()
     delete DropOutUI::dropOutUI;
 }
 
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOut* DropOut::getControlInstance()
 {
     if (DropOut::dropOut == nullptr)
@@ -42,12 +30,6 @@ DropOut* DropOut::getControlInstance()
     return DropOut::dropOut;
 }
 
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOutUI* DropOut::getUI()
 {
     return this->dropOutUI;
