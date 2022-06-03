@@ -26,7 +26,7 @@ public:
  *  Class Name   : SignUpUI
  *  Class Type   : Boundary
  *  Relationship : SignUpUI IS-A UI
- *  Description  : Singleton Classë¡œ êµ¬í˜„ëœ, SignUp Use Caseì—ì„œ ì…ì¶œë ¥ì„ ì²˜ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
+ *  Description  : Singleton Class·Î ±¸ÇöµÈ, SignUp Use Case¿¡¼­ ÀÔÃâ·ÂÀ» Ã³¸®ÇÏ´Â Å¬·¡½º
  */
 class SignUpUI : public UI
 {
@@ -539,14 +539,14 @@ private:
     ~Admin();
 
 private:
-    static Admin* admin;   // ê´€ë¦¬ì
-    static string loginID; // í˜„ì¬ ë¡œê·¸ì¸ì¤‘ì¸ íšŒì›ì˜ ID
+    static Admin* admin;   // °ü¸®ÀÚ
+    static string loginID; // ÇöÀç ·Î±×ÀÎÁßÀÎ È¸¿øÀÇ ID
     
-    Member* memberList[MAX_ALL_MEMBERS]; // ì „ì²´ íšŒì› ë¦¬ìŠ¤íŠ¸
-    int members; // ì „ì²´ íšŒì›ìˆ˜
+    Member* memberList[MAX_ALL_MEMBERS]; // ÀüÃ¼ È¸¿ø ¸®½ºÆ®
+    int members; // ÀüÃ¼ È¸¿ø¼ö
 
-    Product* productList[MAX_ALL_PRODUCTS]; // ì „ì²´ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸ (íŒë§¤ì¤‘ ìƒí’ˆ + íŒë§¤ì™„ë£Œ ìƒí’ˆ)
-    int products; // ì „ì²´ ìƒí’ˆìˆ˜ (íŒë§¤ì¤‘ ìƒí’ˆ + íŒë§¤ì™„ë£Œ ìƒí’ˆ)
+    Product* productList[MAX_ALL_PRODUCTS]; // ÀüÃ¼ »óÇ° ¸®½ºÆ® (ÆÇ¸ÅÁß »óÇ° + ÆÇ¸Å¿Ï·á »óÇ°)
+    int products; // ÀüÃ¼ »óÇ°¼ö (ÆÇ¸ÅÁß »óÇ° + ÆÇ¸Å¿Ï·á »óÇ°)
     
 };
 
@@ -560,14 +560,14 @@ class Member
 {
 // Use Case Functions
 public:
-    bool sale(string productName, string brand, int price, int qty); // íŒë§¤ ì˜ë¥˜ ë“±ë¡
-    string listOnSale();          // ë“±ë¡ ìƒí’ˆ ì¡°íšŒ
-    string listSoldOut();         // íŒë§¤ ì™„ë£Œ ìƒí’ˆ ì¡°íšŒ
-    Product* searchOnSale(string productName);        // ìƒí’ˆ ì •ë³´ ê²€ìƒ‰
-    bool purchase();            // ìƒí’ˆ êµ¬ë§¤
-    string listPurchaseHistory(); // ìƒí’ˆ êµ¬ë§¤ ë‚´ì—­ ì¡°íšŒ
-    bool rate(string productName, int rating);                // ìƒí’ˆ êµ¬ë§¤ ë§Œì¡±ë„ í‰ê°€
-    string collectStatistics();   // íŒë§¤ ìƒí’ˆ í†µê³„
+    bool sale(string productName, string brand, int price, int qty); // ÆÇ¸Å ÀÇ·ù µî·Ï
+    string listOnSale();          // µî·Ï »óÇ° Á¶È¸
+    string listSoldOut();         // ÆÇ¸Å ¿Ï·á »óÇ° Á¶È¸
+    Product* searchOnSale(string productName);        // »óÇ° Á¤º¸ °Ë»ö
+    bool purchase();            // »óÇ° ±¸¸Å
+    string listPurchaseHistory(); // »óÇ° ±¸¸Å ³»¿ª Á¶È¸
+    bool rate(string productName, int rating);                // »óÇ° ±¸¸Å ¸¸Á·µµ Æò°¡
+    string collectStatistics();   // ÆÇ¸Å »óÇ° Åë°è
 
 // get Functions
 public:
@@ -583,20 +583,20 @@ public:
     Member(string name, string SSN, string ID, string password);
     ~Member();
 
-// íšŒì› ì¸ì ì‚¬í•­
+// È¸¿ø ÀÎÀû»çÇ×
 private:
-    string name;     // íšŒì› ì„±ëª…
-    string SSN;      // ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ (Social Security Number)
-    string ID;       // íšŒì› ID
-    string password; // íšŒì› ë¹„ë°€ë²ˆí˜¸
+    string name;     // È¸¿ø ¼º¸í
+    string SSN;      // ÁÖ¹Îµî·Ï¹øÈ£ (Social Security Number)
+    string ID;       // È¸¿ø ID
+    string password; // È¸¿ø ºñ¹Ğ¹øÈ£
 
-// íšŒì›ë³„ íŒë§¤Â·êµ¬ë§¤ ìƒí’ˆ ë‚´ì—­
+// È¸¿øº° ÆÇ¸Å¡¤±¸¸Å »óÇ° ³»¿ª
 private:
-    Product* saleList[MAX_PERSONAL_PRODUCTS]; // íŒë§¤ì¤‘Â·íŒë§¤ì™„ë£Œ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸
-    int saleProducts;  // ê°œì¸ë³„ íŒë§¤í•œ ìƒí’ˆ ì¢…ë¥˜ ê°œìˆ˜
+    Product* saleList[MAX_PERSONAL_PRODUCTS]; // ÆÇ¸ÅÁß¡¤ÆÇ¸Å¿Ï·á »óÇ° ¸®½ºÆ®
+    int saleProducts;  // °³ÀÎº° ÆÇ¸ÅÇÑ »óÇ° Á¾·ù °³¼ö
 
-    Product* purchaseList[MAX_PERSONAL_PRODUCTS]; // êµ¬ë§¤ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸
-    int purchasedProducts; // ê°œì¸ë³„ êµ¬ë§¤í•œ ìƒí’ˆ ì¢…ë¥˜ ê°œìˆ˜
+    Product* purchaseList[MAX_PERSONAL_PRODUCTS]; // ±¸¸Å »óÇ° ¸®½ºÆ®
+    int purchasedProducts; // °³ÀÎº° ±¸¸ÅÇÑ »óÇ° Á¾·ù °³¼ö
 };
 
 /*

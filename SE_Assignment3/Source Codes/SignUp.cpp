@@ -7,8 +7,8 @@ SignUp* SignUp::signUp = nullptr;
 /*
  *  Function Name : getSignUpUiInstance
  *  Parameters    : -
- *  Return Type   : 1) SignUpUI ; SignUpUI ObjectÏùò Reference
- *  Description   : 'SignUpUI' Singleton ObjectÎ•º Î∞òÌôò
+ *  Return Type   : 1) SignUpUI ; SignUpUI Object¿« Reference
+ *  Description   : 'SignUpUI' Singleton Object∏¶ π›»Ø
  */
 SignUpUI* SignUpUI::getUiInstance()
 {

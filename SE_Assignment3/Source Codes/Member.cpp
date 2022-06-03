@@ -8,20 +8,20 @@
  */
 bool Member::sale(string productName, string brand, int price, int qty)
 {
-    // ê°œì¸ë³„ ìµœëŒ€ íŒë§¤ ìƒí’ˆ ê°œìˆ˜ ì´ˆê³¼
+    // °³ÀÎº° ÃÖ´ë ÆÇ¸Å »óÇ° °³¼ö ÃÊ°ú
     if(saleProducts >= MAX_PERSONAL_PRODUCTS)
-        return false; // íŒë§¤ ì‹¤íŒ¨
+        return false; // ÆÇ¸Å ½ÇÆĞ
 
-    // ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+    // ·Î±×¾Æ¿ô »óÅÂ
     if(Admin::getLoginID().empty())
-        return false; // íŒë§¤ ì‹¤íŒ¨
+        return false; // ÆÇ¸Å ½ÇÆĞ
 
     Product *newProduct = new Product(productName, brand, price, qty, Admin::getLoginID());
 
-    // íšŒì› ê°œì¸ë³„ íŒë§¤ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸ì— ë“±ë¡
+    // È¸¿ø °³ÀÎº° ÆÇ¸Å »óÇ° ¸®½ºÆ®¿¡ µî·Ï
     saleList[saleProducts++] = newProduct;
 
-    // ì „ì²´ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸ì— ë“±ë¡
+    // ÀüÃ¼ »óÇ° ¸®½ºÆ®¿¡ µî·Ï
     Admin::getAdminInstance()->addProduct(newProduct);
 
     return true;
@@ -29,13 +29,13 @@ bool Member::sale(string productName, string brand, int price, int qty)
 
 string Member::listOnSale()
 {
-    // ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+    // ·Î±×¾Æ¿ô »óÅÂ
     if (Admin::getLoginID().empty())
-        return ">\n"; // íŒë§¤ì¤‘ ìƒí’ˆ ì¡°íšŒ ì‹¤íŒ¨
+        return ">\n"; // ÆÇ¸ÅÁß »óÇ° Á¶È¸ ½ÇÆĞ
 
-    // íŒë§¤ ì¤‘ì¸ ìƒí’ˆ ì—†ìŒ
+    // ÆÇ¸Å ÁßÀÎ »óÇ° ¾øÀ½
     if (saleProducts == 0)
-        return ">\n"; // íŒë§¤ì¤‘ ìƒí’ˆ ì¡°íšŒ ì‹¤íŒ¨
+        return ">\n"; // ÆÇ¸ÅÁß »óÇ° Á¶È¸ ½ÇÆĞ
 
     string listOnSale;
     string productName, brand, price, onSaleQty;
@@ -54,13 +54,13 @@ string Member::listOnSale()
 
 string Member::listSoldOut()
 {
-    // ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+    // ·Î±×¾Æ¿ô »óÅÂ
     if (Admin::getLoginID().empty())
-        return ">"; // íŒë§¤ì¤‘ ìƒí’ˆ ì¡°íšŒ ì‹¤íŒ¨
+        return ">"; // ÆÇ¸ÅÁß »óÇ° Á¶È¸ ½ÇÆĞ
 
-    // íŒë§¤í•œ ìƒí’ˆ ì—†ìŒ
+    // ÆÇ¸ÅÇÑ »óÇ° ¾øÀ½
     if (saleProducts == 0)
-        return ">"; // íŒë§¤ ì™„ë£Œ ìƒí’ˆ ì¡°íšŒ ì‹¤íŒ¨
+        return ">"; // ÆÇ¸Å ¿Ï·á »óÇ° Á¶È¸ ½ÇÆĞ
 
     string listSoldOut;
     int cnt_listSoldOut = 0;
@@ -96,36 +96,36 @@ bool Member::purchase()
 {
     Product* targetProduct = SearchOnSale::getFocusOn();
 
-    // ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+    // ·Î±×¾Æ¿ô »óÅÂ
     if(Admin::getAdminInstance()->getLoginID == nullptr)
-        return false; // êµ¬ë§¤ ì‹¤íŒ¨
+        return false; // ±¸¸Å ½ÇÆĞ
 
-    // ìƒí’ˆ ì •ë³´ ê²€ìƒ‰ ë¯¸ì´í–‰ ìƒíƒœ
+    // »óÇ° Á¤º¸ °Ë»ö ¹ÌÀÌÇà »óÅÂ
     if(targetProduct == nullptr)
-        return false; // êµ¬ë§¤ ì‹¤íŒ¨
+        return false; // ±¸¸Å ½ÇÆĞ
 
-    // ì¬ê³  ì—†ìŒ
+    // Àç°í ¾øÀ½
     if(targetProduct->getOnSaleQty() == 0)
-        return false; // êµ¬ë§¤ ì‹¤íŒ¨
+        return false; // ±¸¸Å ½ÇÆĞ
 
-    // êµ¬ë§¤ ì²˜ë¦¬
+    // ±¸¸Å Ã³¸®
     targetProduct->setPurchase();
 
-    // íšŒì›ë³„ êµ¬ë§¤ ìƒí’ˆ ë‚´ì—­ì— ì¶”ê°€
+    // È¸¿øº° ±¸¸Å »óÇ° ³»¿ª¿¡ Ãß°¡
     purchaseList[purchasedProducts++] = targetProduct;
 
-    return true; // êµ¬ë§¤ ì„±ê³µ
+    return true; // ±¸¸Å ¼º°ø
 }
 
 string Member::listPurchaseHistory()
 {
-    // ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+    // ·Î±×¾Æ¿ô »óÅÂ
     if (Admin::getLoginID().empty())
-        return ">"; // ìƒí’ˆ êµ¬ë§¤ ë‚´ì—­ ì¡°íšŒ ì‹¤íŒ¨
+        return ">"; // »óÇ° ±¸¸Å ³»¿ª Á¶È¸ ½ÇÆĞ
 
-    // íŒë§¤í•œ ìƒí’ˆ ì—†ìŒ
+    // ÆÇ¸ÅÇÑ »óÇ° ¾øÀ½
     if (purchasedProducts == 0)
-        return ">"; // ìƒí’ˆ êµ¬ë§¤ ë‚´ì—­ ì¡°íšŒ ì‹¤íŒ¨
+        return ">"; // »óÇ° ±¸¸Å ³»¿ª Á¶È¸ ½ÇÆĞ
 
     string listPurchaseHistory;
     int cnt_listPurchase = 0;
@@ -152,21 +152,21 @@ string Member::listPurchaseHistory()
 
 bool Member::rate(string productName, int rating)
 {
-    // í‰ê°€ ë²”ìœ„ ë°–ì˜ ë§Œì¡±ë„ ì…ë ¥
+    // Æò°¡ ¹üÀ§ ¹ÛÀÇ ¸¸Á·µµ ÀÔ·Â
     if (rating < 1 || rating > 5)
-        return false; // êµ¬ë§¤ë§Œì¡±ë„ í‰ê°€ ì‹¤íŒ¨
+        return false; // ±¸¸Å¸¸Á·µµ Æò°¡ ½ÇÆĞ
 
     for (int i = 0; i < purchasedProducts; i++)
     {
         if (purchaseList[i]->getProductName() == productName)
         {
             purchaseList[i]->setRating(rating);
-            return true; // êµ¬ë§¤ë§Œì¡±ë„ í‰ê°€ ì„±ê³µ
+            return true; // ±¸¸Å¸¸Á·µµ Æò°¡ ¼º°ø
         }
     }
 
-    // ì¼ì¹˜í•˜ëŠ” ìƒí’ˆëª… ì—†ìŒ
-    return false; // êµ¬ë§¤ë§Œì¡±ë„ í‰ê°€ ì‹¤íŒ¨
+    // ÀÏÄ¡ÇÏ´Â »óÇ°¸í ¾øÀ½
+    return false; // ±¸¸Å¸¸Á·µµ Æò°¡ ½ÇÆĞ
 }
 
 string Member::collectStatistics()

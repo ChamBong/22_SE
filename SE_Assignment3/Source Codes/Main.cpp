@@ -21,7 +21,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 1.1. íšŒì› ê°€ìž… (SignUp)
+            case 1: // 1.1. È¸¿ø °¡ÀÔ (SignUp)
             {
                 // Call Control Instance
                 SignUp* signUp = SignUp::getControlInstance();
@@ -35,7 +35,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 ss >> name >> SSN >> ID >> password;
 
                 // Call Boundary Instance (Output Processing)
-                signUp->getUI()->setOutput(outputFile, "1.1. íšŒì›ê°€ìž…\n");
+                signUp->getUI()->setOutput(outputFile, "1.1. È¸¿ø°¡ÀÔ\n");
 
                 // Try Sign Up
                 if(Admin::getAdminInstance()->addMember(name,SSN,ID,password)) // Sign Up Success
@@ -46,13 +46,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 break;
             }
 
-            case 2: // 1.2. íšŒì›íƒˆí‡´ (DropOut)
+            case 2: // 1.2. È¸¿øÅ»Åð (DropOut)
             {
                 // Call Control Instance
                 DropOut* dropOut = DropOut::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                dropOut->getUI()->setOutput(outputFile, "1.2. íšŒì›íƒˆí‡´\n");
+                dropOut->getUI()->setOutput(outputFile, "1.2. È¸¿øÅ»Åð\n");
 
                 // Try Drop Out
                 string droppedID = Admin::getAdminInstance()->deleteMember();
@@ -72,7 +72,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 2.1. ë¡œê·¸ì¸ (Login)
+            case 1: // 2.1. ·Î±×ÀÎ (Login)
             {
                 // Call Control Instance
                 Login* login = Login::getControlInstance();
@@ -86,7 +86,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 ss >> ID >> password;
 
                 // Call Boundary Instance (Output Processing)
-                login->getUI()->setOutput(outputFile, "2.1. ë¡œê·¸ì¸\n");
+                login->getUI()->setOutput(outputFile, "2.1. ·Î±×ÀÎ\n");
 
                 // Try Login
                 if(Admin::getAdminInstance()->login(ID,password)) // Login Success
@@ -97,13 +97,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 break;
             }
 
-            case 2: // 2.2. ë¡œê·¸ì•„ì›ƒ (Logout)
+            case 2: // 2.2. ·Î±×¾Æ¿ô (Logout)
             {
                 // Call Control Instance
                 Logout *logout = Logout::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                logout->getUI()->setOutput(outputFile, "2.2. ë¡œê·¸ì•„ì›ƒ\n");
+                logout->getUI()->setOutput(outputFile, "2.2. ·Î±×¾Æ¿ô\n");
 
                 // Try Logout
                 string logoutID = Admin::getAdminInstance()->logout();
@@ -123,7 +123,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 3.1. íŒë§¤ ì˜ë¥˜ ë“±ë¡ (Enroll)
+            case 1: // 3.1. ÆÇ¸Å ÀÇ·ù µî·Ï (Enroll)
             {
                 // Call Control Instance
                 Enroll *enroll = Enroll::getControlInstance();
@@ -140,7 +140,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Member* member = admin->findMember(Admin::getLoginID());
 
                 // Call Boundary Instance (Output Processing)
-                enroll->getUI()->setOutput(outputFile, "3.1. íŒë§¤ ì˜ë¥˜ ë“±ë¡\n");
+                enroll->getUI()->setOutput(outputFile, "3.1. ÆÇ¸Å ÀÇ·ù µî·Ï\n");
 
                 // Try Enroll
                 if (member->sale(productName, brand, stoi(price), stoi(qty))) // Enroll Success
@@ -150,13 +150,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 
                 break;
             }
-            case 2: // 3.2. ë“±ë¡ ìƒí’ˆ ì¡°íšŒ (ListOnSale)
+            case 2: // 3.2. µî·Ï »óÇ° Á¶È¸ (ListOnSale)
             {
                 // Call Control Instance
                 ListOnSale *listOnSale = ListOnSale::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                listOnSale->getUI()->setOutput(outputFile, "3.2. ë“±ë¡ ìƒí’ˆ ì¡°íšŒ\n");
+                listOnSale->getUI()->setOutput(outputFile, "3.2. µî·Ï »óÇ° Á¶È¸\n");
 
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
@@ -165,13 +165,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
                 break;
             }
-            case 3: // 3.3. íŒë§¤ ì™„ë£Œ ìƒí’ˆ ì¡°íšŒ (ListSoldOut)
+            case 3: // 3.3. ÆÇ¸Å ¿Ï·á »óÇ° Á¶È¸ (ListSoldOut)
             {
                 // Call Control Instance
                 ListSoldOut *listSoldOut = ListSoldOut::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                listSoldOut->getUI()->setOutput(outputFile, "3.3. íŒë§¤ ì™„ë£Œ ìƒí’ˆ ì¡°íšŒ\n");
+                listSoldOut->getUI()->setOutput(outputFile, "3.3. ÆÇ¸Å ¿Ï·á »óÇ° Á¶È¸\n");
 
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
@@ -189,7 +189,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 4.1. ìƒí’ˆ ì •ë³´ ê²€ìƒ‰ (SearchOnSale)
+            case 1: // 4.1. »óÇ° Á¤º¸ °Ë»ö (SearchOnSale)
             {
                 // Call Control Instance
                 SearchOnSale *searchOnSale = SearchOnSale::getControlInstance();
@@ -201,7 +201,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Member* member = admin->findMember(Admin::getLoginID());
 
                 // Call Boundary Instance (Output Processing)
-                searchOnSale->getUI()->setOutput(outputFile, "4.1. ìƒí’ˆ ì •ë³´ ê²€ìƒ‰\n");
+                searchOnSale->getUI()->setOutput(outputFile, "4.1. »óÇ° Á¤º¸ °Ë»ö\n");
 
                 // Try Search
                 Product* searchTarget = member->searchOnSale(searchInfo);
@@ -226,14 +226,14 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 
                 break;
             }
-            case 2: // 4.2. ìƒí’ˆ êµ¬ë§¤ (Purchase)
+            case 2: // 4.2. »óÇ° ±¸¸Å (Purchase)
             {
                 // Call Control Instance
                 Purchase *purchase = Purchase::getControlInstance();
 
-                purchase->getUI()->setOutput(outputFile, "4.2. ìƒí’ˆ êµ¬ë§¤\n");
+                purchase->getUI()->setOutput(outputFile, "4.2. »óÇ° ±¸¸Å\n");
 
-                // ìƒí’ˆ ì •ë³´ ê²€ìƒ‰ì´ ì„ í–‰ë˜ì§€ ì•Šì€ ê²½ìš°
+                // »óÇ° Á¤º¸ °Ë»öÀÌ ¼±ÇàµÇÁö ¾ÊÀº °æ¿ì
                 if(SearchOnSale::getFocusOn() == nullptr)
                 {
                     purchase->getUI()->setOutput(outputFile, ">\n\n");
@@ -249,18 +249,18 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 else // Purchase Failure
                     purchase->getUI()->setOutput(outputFile, ">\n\n");
 
-                // ìƒí’ˆ ì •ë³´ ê²€ìƒ‰ ì°½ ë‹«ê¸°
+                // »óÇ° Á¤º¸ °Ë»ö Ã¢ ´Ý±â
                 SearchOnSale::setFocusOn(nullptr);
 
                 break;
             }
-            case 3: // 4.3. ìƒí’ˆ êµ¬ë§¤ ë‚´ì—­ ì¡°íšŒ (ListPurchaseHistory)
+            case 3: // 4.3. »óÇ° ±¸¸Å ³»¿ª Á¶È¸ (ListPurchaseHistory)
             {
                 // Call Control Instance
                 ListPurchaseHistory *listPurchaseHistory = ListPurchaseHistory::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                listPurchaseHistory->getUI()->setOutput(outputFile, "4.3. ìƒí’ˆ êµ¬ë§¤ ë‚´ì—­ ì¡°íšŒ\n");
+                listPurchaseHistory->getUI()->setOutput(outputFile, "4.3. »óÇ° ±¸¸Å ³»¿ª Á¶È¸\n");
 
                 Admin* admin = Admin::getAdminInstance();
                 Member* member = admin->findMember(Admin::getLoginID());
@@ -269,7 +269,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
 
                 break;
             }
-            case 4: // 4.4. ìƒí’ˆ êµ¬ë§¤ë§Œì¡±ë„ í‰ê°€ (Rate)
+            case 4: // 4.4. »óÇ° ±¸¸Å¸¸Á·µµ Æò°¡ (Rate)
             {
                 // Call Control Instance
                 Rate *rate = Rate::getControlInstance();
@@ -286,7 +286,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 ss >> productName >> rating;
 
                 // Call Boundary Instance (Output Processing)
-                rate->getUI()->setOutput(outputFile, "4.4. ìƒí’ˆ êµ¬ë§¤ë§Œì¡±ë„ í‰ê°€\n");
+                rate->getUI()->setOutput(outputFile, "4.4. »óÇ° ±¸¸Å¸¸Á·µµ Æò°¡\n");
 
                 // Try Rate
                 if (member->rate(productName, stoi(rating))) // Rate Success
@@ -309,7 +309,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 5.1. íŒë§¤ ìƒí’ˆ í†µê³„ (CollectStatistics)
+            case 1: // 5.1. ÆÇ¸Å »óÇ° Åë°è (CollectStatistics)
             {
                 // Call Control Instance
                 CollectStatistics *collectStatistics = CollectStatistics::getControlInstance();
@@ -318,7 +318,7 @@ void run(ifstream &inputFile, ofstream &outputFile)
                 Member* member = admin->findMember(Admin::getLoginID());
 
                 // Call Boundary Instance (Output Processing)
-                collectStatistics->getUI()->setOutput(outputFile, "5.1. íŒë§¤ ìƒí’ˆ í†µê³„\n");
+                collectStatistics->getUI()->setOutput(outputFile, "5.1. ÆÇ¸Å »óÇ° Åë°è\n");
 
                 // Try Collect Statistics
                 string statisticsInfo = member->collectStatistics();
@@ -338,13 +338,13 @@ void run(ifstream &inputFile, ofstream &outputFile)
         {
             switch (menu_level_2)
             {
-            case 1: // 6.1. ì¢…ë£Œ (Exit)
+            case 1: // 6.1. Á¾·á (Exit)
             {
                 // Call Control Instance
                 Exit *exit = Exit::getControlInstance();
 
                 // Call Boundary Instance (Output Processing)
-                exit->getUI()->setOutput(outputFile, "6.1. ì¢…ë£Œ");
+                exit->getUI()->setOutput(outputFile, "6.1. Á¾·á");
 
                 is_program_exit = true;
                 return;

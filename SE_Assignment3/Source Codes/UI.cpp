@@ -16,10 +16,10 @@ string UI::getInput(ifstream &inputFile)
 
 /*
  *  Function Name : setOutput
- *  Parameters    : 1) outputFile (ofstream) ; ê²°ê³¼ê°€ ì €ì¥ë  íŒŒì¼ìŠ¤íŠ¸ë¦¼
- *                  2) output     (string)   ; ê²°ê³¼ ë°ì´í„°
+ *  Parameters    : 1) outputFile (ofstream) ; °á°ú°¡ ÀúÀåµÉ ÆÄÀÏ½ºÆ®¸²
+ *                  2) output     (string)   ; °á°ú µ¥ÀÌÅÍ
  *  Return Type   : -
- *  Description   : ì „ë‹¬ë°›ì€ ë¬¸ìì—´ì„ íŒŒì¼ìŠ¤íŠ¸ë¦¼ì— ì¶œë ¥
+ *  Description   : Àü´Ş¹ŞÀº ¹®ÀÚ¿­À» ÆÄÀÏ½ºÆ®¸²¿¡ Ãâ·Â
  */
 void UI::setOutput(ofstream &outputFile, string output)
 {

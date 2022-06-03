@@ -14,18 +14,18 @@ string Admin::loginID = "";
  */
 bool Admin::addMember(string name, string SSN, string ID, string password)
 {
-    // ìµœëŒ€ íšŒì›ìˆ˜ ê²€ì‚¬
+    // ÃÖ´ë È¸¿ø¼ö °Ë»ç
     if (members >= MAX_ALL_MEMBERS)
         return false;
 
-    // ì¤‘ë³µ ID ê²€ì‚¬
+    // Áßº¹ ID °Ë»ç
     for (int i = 0; i < members; i++)
     {
-        if (memberList[i]->getID() == ID) // ID ì¤‘ë³µ ë°œìƒ
-            return false;                 // íšŒì›ê°€ì… ì‹¤íŒ¨
+        if (memberList[i]->getID() == ID) // ID Áßº¹ ¹ß»ı
+            return false;                 // È¸¿ø°¡ÀÔ ½ÇÆĞ
     }
 
-    // íšŒì›ê°€ì… ì„±ê³µ
+    // È¸¿ø°¡ÀÔ ¼º°ø
     memberList[members++] = new Member(name, SSN, ID, password);
 
     return true;
@@ -41,27 +41,27 @@ string Admin::deleteMember()
 {
     string currLoginID = Admin::loginID;
     
-    // í˜„ì¬ ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ì—†ìŒ
+    // ÇöÀç ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ ¾øÀ½
     if (Admin::loginID.empty())
         return currLoginID;
 
-    // ë¡œê·¸ì¸ ì¤‘ì¸ ì‚¬ìš©ìë¥¼ íƒˆí‡´
+    // ·Î±×ÀÎ ÁßÀÎ »ç¿ëÀÚ¸¦ Å»Åğ
     for (int i = 0; i < members; i++)
     {
         if (memberList[i]->getID() == loginID)
         {
-            // ì‚¬ìš©ì ì •ë³´ ì‚­ì œ
+            // »ç¿ëÀÚ Á¤º¸ »èÁ¦
             delete memberList[i];
 
-            // íšŒì› ë°°ì—´ Compaction
+            // È¸¿ø ¹è¿­ Compaction
             for (int j = i + 1; j < members; j++)
             {
                 memberList[j - 1] = memberList[j];
                 memberList[j] = nullptr;
             }
 
-            members--; // ì „ì²´ íšŒì›ìˆ˜ ì°¨ê°
-            Admin::loginID.clear(); // ë¡œê·¸ì•„ì›ƒ ì²˜ë¦¬
+            members--; // ÀüÃ¼ È¸¿ø¼ö Â÷°¨
+            Admin::loginID.clear(); // ·Î±×¾Æ¿ô Ã³¸®
 
             return currLoginID;
         }
@@ -80,16 +80,16 @@ bool Admin::login(string ID, string password)
 {
     for (int i = 0; i < members; i++)
     {
-        // ì¼ì¹˜í•˜ëŠ” ID, íŒ¨ìŠ¤ì›Œë“œ ê²€ì‚¬
+        // ÀÏÄ¡ÇÏ´Â ID, ÆĞ½º¿öµå °Ë»ç
         if (memberList[i]->getID() == ID && memberList[i]->getPassword() == password)
         {
-            // ë¡œê·¸ì¸ ì²˜ë¦¬
+            // ·Î±×ÀÎ Ã³¸®
             Admin::loginID = ID;
             return true;
         }
     }
 
-    // ë¡œê·¸ì¸ ì‹¤íŒ¨
+    // ·Î±×ÀÎ ½ÇÆĞ
     return false;
 }
 
@@ -105,11 +105,11 @@ string Admin::logout()
 {
     string currLoginID = Admin::loginID;
 
-    // ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ì—†ìŒ
+    // ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ ¾øÀ½
     if(currLoginID.empty())
         return currLoginID;
 
-    // ë¡œê·¸ì•„ì›ƒ ì²˜ë¦¬
+    // ·Î±×¾Æ¿ô Ã³¸®
     Admin::loginID.clear();
 
     return currLoginID;
@@ -124,15 +124,15 @@ string Admin::logout()
  */
 Member* Admin::findMember(string ID)
 {
-    // ì¼ì¹˜í•˜ëŠ” ID ê²€ì‚¬
+    // ÀÏÄ¡ÇÏ´Â ID °Ë»ç
     for (int i = 0; i < members; i++)
     {
-        // IDì— í•´ë‹¹ë˜ëŠ” íšŒì› Object ë°˜í™˜
+        // ID¿¡ ÇØ´çµÇ´Â È¸¿ø Object ¹İÈ¯
         if (admin->memberList[i]->getID() == ID)
             return memberList[i];
     }
 
-    // ì¼ì¹˜í•˜ëŠ” íšŒì› ì—†ìŒ
+    // ÀÏÄ¡ÇÏ´Â È¸¿ø ¾øÀ½
     return nullptr;
 }
 
@@ -145,16 +145,16 @@ Product* Admin::searchProduct(string productName)
 {
     for (int i = 0; i < products; i++)
     {
-        // ê²€ìƒ‰ì–´ì™€ ì¼ì¹˜í•˜ëŠ” ìƒí’ˆ ê²€ì‚¬
+        // °Ë»ö¾î¿Í ÀÏÄ¡ÇÏ´Â »óÇ° °Ë»ç
         if (productList[i]->getProductName() == productName)
         {
-            // // í˜„ì¬ íŒë§¤ì¤‘ì¸ ìƒí’ˆì¸ì§€ë¥¼ ê²€ì‚¬
+            // // ÇöÀç ÆÇ¸ÅÁßÀÎ »óÇ°ÀÎÁö¸¦ °Ë»ç
             // if (productList[i]->getOnSaleQty() > 0)
-                return productList[i]; // ê²€ìƒ‰ ì„±ê³µ
+                return productList[i]; // °Ë»ö ¼º°ø
         }
     }
 
-    // ê²€ìƒ‰ ì‹¤íŒ¨
+    // °Ë»ö ½ÇÆĞ
     return nullptr;
 }
 

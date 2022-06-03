@@ -23,9 +23,9 @@ using std::string;
 using std::stringstream;
 
 // Constants
-const int MAX_ALL_MEMBERS  = 1000;     // ìµœëŒ€ ì „ì²´ íšŒì›ìˆ˜
-const int MAX_ALL_PRODUCTS = 1000;     // ìµœëŒ€ ì „ì²´ ìƒí’ˆìˆ˜
-const int MAX_PERSONAL_PRODUCTS = 500; // ê°œì¸ë³„ ìµœëŒ€ êµ¬ì… ë° íŒë§¤ ìƒí’ˆìˆ˜ 
+const int MAX_ALL_MEMBERS  = 1000;     // ÃÖ´ë ÀüÃ¼ È¸¿ø¼ö
+const int MAX_ALL_PRODUCTS = 1000;     // ÃÖ´ë ÀüÃ¼ »óÇ°¼ö
+const int MAX_PERSONAL_PRODUCTS = 500; // °³ÀÎº° ÃÖ´ë ±¸ÀÔ ¹× ÆÇ¸Å »óÇ°¼ö 
 
 
 
