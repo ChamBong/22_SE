@@ -12,23 +12,11 @@ CollectStatisticsUI* CollectStatisticsUI::getUiInstance()
     return CollectStatisticsUI::collectStatisticsUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatisticsUI::CollectStatisticsUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatisticsUI::~CollectStatisticsUI()
 {
     delete CollectStatisticsUI::collectStatisticsUI;
@@ -59,23 +47,11 @@ CollectStatisticsUI* CollectStatistics::getUI()
     return collectStatisticsUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatistics::CollectStatistics()
 {
     collectStatisticsUI = CollectStatisticsUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 CollectStatistics::~CollectStatistics()
 {
     delete collectStatistics;

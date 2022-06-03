@@ -18,23 +18,11 @@ LogoutUI* LogoutUI::getUiInstance()
     return LogoutUI::logoutUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LogoutUI::LogoutUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LogoutUI::~LogoutUI()
 {
     delete LogoutUI::logoutUI;
@@ -65,23 +53,11 @@ LogoutUI *Logout::getUI()
     return this->logoutUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Logout::Logout()
 {
     this->logoutUI = LogoutUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Logout::~Logout()
 {
     delete logout;

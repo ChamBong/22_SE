@@ -7,10 +7,13 @@ string Admin::loginID = "";
 
 
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : addMember
+ *  Parameters    : 1) name             (String) ; 이름
+                    2) SSN              (String) ; 주민번호
+                    3) ID               (string) ; ID
+                    4) password         (string) ; 비밀번호
+ *  Return Type   : bool
+ *  Description   : 회원가입 요청 시 입력받은 정보를 회원리스트에 추가
  */
 bool Admin::addMember(string name, string SSN, string ID, string password)
 {
@@ -32,10 +35,10 @@ bool Admin::addMember(string name, string SSN, string ID, string password)
 }
 
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : deleteMember
+ *  Parameters    : -
+ *  Return Type   : string
+ *  Description   : 회원 탈퇴 요청 시 회원리스트에서 정보 삭제
  */
 string Admin::deleteMember()
 {
@@ -71,10 +74,11 @@ string Admin::deleteMember()
 }
 
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : login
+ *  Parameters    : 1) ID               (string) ; ID
+                    2) password         (string) ; 비밀번호
+ *  Return Type   : bool
+ *  Description   : ID, 패스워드 검사 후 일치하면 로그인 처리
  */
 bool Admin::login(string ID, string password)
 {
@@ -93,13 +97,11 @@ bool Admin::login(string ID, string password)
     return false;
 }
 
-
-
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : logout
+ *  Parameters    : -
+ *  Return Type   : string
+ *  Description   : 로그인한 사용자가 로그아웃 요청시 로그아웃 처리
  */
 string Admin::logout()
 {
@@ -115,12 +117,11 @@ string Admin::logout()
     return currLoginID;
 }
 
-
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : findMember
+ *  Parameters    : Member*
+ *  Return Type   : 1) ID               (string) ; ID
+ *  Description   : 회원리스트에서 전달받은 ID를 가진 객체가 있는지 검사
  */
 Member* Admin::findMember(string ID)
 {
@@ -136,11 +137,23 @@ Member* Admin::findMember(string ID)
     return nullptr;
 }
 
+/*
+ *  Function Name : addProduct
+ *  Parameters    : 1) newProduct       (Product*) ; 상품
+ *  Return Type   : -
+ *  Description   : 상품 추가 요청시 상품리스트에 해당 상품 추가
+ */
 void Admin::addProduct(Product* newProduct)
 {
     productList[products++] = newProduct;
 }
 
+/*
+ *  Function Name : searchProduct
+ *  Parameters    : 1) productName       (string) ; 상품 이름
+ *  Return Type   : Product*
+ *  Description   : 전달받은 상품이름으로 상품리스트에서 상품 검색
+ */
 Product* Admin::searchProduct(string productName)
 {
     for (int i = 0; i < products; i++)
@@ -159,10 +172,10 @@ Product* Admin::searchProduct(string productName)
 }
 
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : getAdminInstance
+ *  Parameters    : -
+ *  Return Type   : Admin*
+ *  Description   : admin object를 받아옴
  */
 Admin* Admin::getAdminInstance()
 {
@@ -173,22 +186,16 @@ Admin* Admin::getAdminInstance()
 }
 
 /*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
+ *  Function Name : getLoginID
+ *  Parameters    : -
+ *  Return Type   : string
+ *  Description   : 로그인 중인 ID를 받아옴
  */
 string Admin::getLoginID()
 {
     return Admin::loginID;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Admin::Admin()
 : members(0), products(0)
 {

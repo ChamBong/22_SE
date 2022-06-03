@@ -18,23 +18,11 @@ EnrollUI* EnrollUI::getUiInstance()
     return EnrollUI::enrollUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 EnrollUI::EnrollUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 EnrollUI::~EnrollUI()
 {
     delete EnrollUI::enrollUI;
@@ -65,23 +53,11 @@ EnrollUI* Enroll::getUI()
     return this->enrollUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Enroll::Enroll()
 {
     this->enrollUI = EnrollUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Enroll::~Enroll()
 {
     delete this->enroll;

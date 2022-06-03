@@ -4,6 +4,12 @@
 ListSoldOutUI* ListSoldOutUI::listSoldOutUI = nullptr;
 ListSoldOut* ListSoldOut::listSoldOut = nullptr;
 
+/*
+ *  Function Name :
+ *  Parameters    :
+ *  Return Type   :
+ *  Description   :
+ */
 ListSoldOutUI* ListSoldOutUI::getUiInstance()
 {
     if(ListSoldOutUI::listSoldOutUI == nullptr)
@@ -12,23 +18,11 @@ ListSoldOutUI* ListSoldOutUI::getUiInstance()
     return ListSoldOutUI::listSoldOutUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListSoldOutUI::ListSoldOutUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListSoldOutUI::~ListSoldOutUI()
 {
     delete ListSoldOutUI::listSoldOutUI;
@@ -59,23 +53,11 @@ ListSoldOutUI* ListSoldOut::getUI()
     return listSoldOutUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListSoldOut::ListSoldOut()
 {
     listSoldOutUI = ListSoldOutUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListSoldOut::~ListSoldOut()
 {
     delete listSoldOut;

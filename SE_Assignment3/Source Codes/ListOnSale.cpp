@@ -4,6 +4,12 @@
 ListOnSaleUI* ListOnSaleUI::listOnSaleUI = nullptr;
 ListOnSale* ListOnSale::listOnSale = nullptr;
 
+/*
+ *  Function Name :
+ *  Parameters    :
+ *  Return Type   :
+ *  Description   :
+ */
 ListOnSaleUI* ListOnSaleUI::getUiInstance()
 {
     if(ListOnSaleUI::listOnSaleUI == nullptr)
@@ -12,23 +18,11 @@ ListOnSaleUI* ListOnSaleUI::getUiInstance()
     return ListOnSaleUI::listOnSaleUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListOnSaleUI::ListOnSaleUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListOnSaleUI::~ListOnSaleUI()
 {
     delete ListOnSaleUI::listOnSaleUI;
@@ -59,23 +53,11 @@ ListOnSaleUI* ListOnSale::getUI()
     return this->listOnSaleUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListOnSale::ListOnSale()
 {
     this->listOnSaleUI = ListOnSaleUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 ListOnSale::~ListOnSale()
 {
     delete this->listOnSale;

@@ -18,23 +18,11 @@ LoginUI* LoginUI::getUiInstance()
     return LoginUI::loginUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LoginUI::LoginUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 LoginUI::~LoginUI()
 {
     delete LoginUI::loginUI;
@@ -65,23 +53,11 @@ LoginUI* Login::getUI()
     return this->loginUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Login::Login()
 {
     this->loginUI = LoginUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Login::~Login()
 {
     delete this->login;

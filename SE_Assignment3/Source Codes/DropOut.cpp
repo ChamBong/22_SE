@@ -18,31 +18,15 @@ DropOutUI* DropOutUI::getUiInstance()
     return DropOutUI::dropOutUI;
 }
 
-
-
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOutUI::DropOutUI()
 {
     // NOP
 }
 
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOutUI::~DropOutUI()
 {
     delete DropOutUI::dropOutUI;
 }
-
-
 
 /*
  *  Function Name : 
@@ -58,8 +42,6 @@ DropOut* DropOut::getControlInstance()
     return DropOut::dropOut;
 }
 
-
-
 /*
  *  Function Name : 
  *  Parameters    : 
@@ -71,25 +53,11 @@ DropOutUI* DropOut::getUI()
     return this->dropOutUI;
 }
 
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOut::DropOut()
 {
     this->dropOutUI = DropOutUI::getUiInstance();
 }
 
-
-
-/*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
- */
 DropOut::~DropOut()
 {
     delete dropOut;
