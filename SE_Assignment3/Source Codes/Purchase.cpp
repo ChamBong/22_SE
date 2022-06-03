@@ -12,34 +12,18 @@ PurchaseUI* PurchaseUI::getUiInstance()
     return PurchaseUI::purchaseUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 PurchaseUI::PurchaseUI()
 {
     // NOP
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
+
 PurchaseUI::~PurchaseUI()
 {
     delete PurchaseUI::purchaseUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
+
 Purchase* Purchase::getControlInstance()
 {
     if (Purchase::purchase == nullptr)
@@ -48,34 +32,16 @@ Purchase* Purchase::getControlInstance()
     return Purchase::purchase;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 PurchaseUI* Purchase::getUI()
 {
     return purchaseUI;
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Purchase::Purchase()
 {
     purchaseUI = PurchaseUI::getUiInstance();
 }
 
-/*
- *  Function Name :
- *  Parameters    :
- *  Return Type   :
- *  Description   : 
- */
 Purchase::~Purchase()
 {
     delete purchase;

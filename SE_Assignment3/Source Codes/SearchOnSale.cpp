@@ -1,13 +1,9 @@
 #include "class.h"
 
-
-
 // Initializing Static Attribute
 SearchOnSaleUI* SearchOnSaleUI::searchOnSaleUI = nullptr;
 SearchOnSale* SearchOnSale::searchOnSale = nullptr;
 Product* SearchOnSale::focusOn = nullptr;
-
-
 
 SearchOnSaleUI* SearchOnSaleUI::getUiInstance()
 {

@@ -1,10 +1,10 @@
 #include "class.h"
 
 /*
- *  Function Name : 
- *  Parameters    : 
- *  Return Type   : 
- *  Description   : 
+ *  Function Name : getInput
+ *  Parameters    : 1) inputFile (ifstream) ; 입력된 문자가 저장된 파일스트림
+ *  Return Type   : string
+ *  Description   : 입력파일로부터 문자를 읽음
  */
 string UI::getInput(ifstream &inputFile)
 {
