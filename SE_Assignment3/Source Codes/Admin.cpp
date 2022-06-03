@@ -4,8 +4,6 @@
 Admin* Admin::admin = nullptr;
 string Admin::loginID = "";
 
-
-
 /*
  *  Function Name : addMember
  *  Parameters    : 1) name             (String) ; ¿Ã∏ß
